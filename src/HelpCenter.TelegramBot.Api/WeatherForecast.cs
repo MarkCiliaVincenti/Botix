@@ -1,6 +1,6 @@
 using System;
 
-namespace TelegramBot.Api
+namespace HelpCenter.TelegramBot.API
 {
     public class WeatherForecast
     {
