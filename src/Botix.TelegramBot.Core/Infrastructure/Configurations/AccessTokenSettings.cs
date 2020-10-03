@@ -1,4 +1,4 @@
-﻿namespace Botix.TelegramBot.Core.Configurations
+﻿namespace Botix.TelegramBot.Core.Infrastructure.Configurations
 {
     public class AccessTokenSettings
     {
