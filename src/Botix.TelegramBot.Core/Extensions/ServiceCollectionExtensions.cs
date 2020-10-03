@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Sockets;
-using Botix.TelegramBot.Core.Application;
-using Botix.TelegramBot.Core.Configurations;
+using Botix.TelegramBot.Core.Infrastructure;
+using Botix.TelegramBot.Core.Infrastructure.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Polly;
@@ -14,7 +14,11 @@ namespace Botix.TelegramBot.Core.Extensions
     {
         public static IServiceCollection TelegramBotConfiguration(this IServiceCollection services, Action<ConfigurationBotOption> options)
         {
-            services.AddHttpClient<TelegramBotClientFactory>();
+            services.AddTransient<CircuitBreakerMessageHandler>();
+
+            services.AddHttpClient<TelegramBotClientFactory>()
+                .AddHttpMessageHandler<CircuitBreakerMessageHandler>();
+
             services.AddSingleton<ITelegramBotClient>(provider =>
             {
                 var logger = provider.GetService<ILogger<ConfigurationBotOption>>();

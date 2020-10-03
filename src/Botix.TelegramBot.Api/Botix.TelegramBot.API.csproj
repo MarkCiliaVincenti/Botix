@@ -17,5 +17,9 @@
     <ProjectReference Include="..\Botix.TelegramBot.Models\Botix.TelegramBot.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\" />
+  </ItemGroup>
+
 
 </Project>
