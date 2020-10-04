@@ -12,13 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Botix.API.Common\Botix.API.Common.csproj" />
-    <ProjectReference Include="..\Botix.TelegramBot.Core\Botix.TelegramBot.Core.csproj" />
-    <ProjectReference Include="..\Botix.TelegramBot.Models\Botix.TelegramBot.Models.csproj" />
+    <Folder Include="Application\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\" />
+    <ProjectReference Include="..\Botix.Bot.Telegram.API.Models\Botix.Bot.Telegram.API.Models.csproj" />
+    <ProjectReference Include="..\Botix.Bot.Telegram\Botix.Bot.Telegram.csproj" />
+    <ProjectReference Include="..\Botix.Common.API\Botix.Common.API.csproj" />
+    <ProjectReference Include="..\Botix.Common.Logging\Botix.Common.Logging.csproj" />
   </ItemGroup>
 
 
