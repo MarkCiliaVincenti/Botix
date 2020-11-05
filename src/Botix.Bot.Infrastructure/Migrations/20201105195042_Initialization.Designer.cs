@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Botix.Bot.Infrastructure.Migrations
 {
     [DbContext(typeof(BotDbContext))]
-    [Migration("20201105115305_Added_common_callback")]
-    partial class Added_common_callback
+    [Migration("20201105195042_Initialization")]
+    partial class Initialization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,9 @@ namespace Botix.Bot.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsProcessed")
                         .HasColumnType("boolean");

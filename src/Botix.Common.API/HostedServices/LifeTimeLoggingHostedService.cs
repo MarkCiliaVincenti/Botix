@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Botix.Common.API.HostedServices
 {
-    public class LifeTimeLoggingHostedService : IHostedService
+    public class LifeTimeLoggingHostedService : BackgroundService
     {
         private readonly IHostApplicationLifetime _applicationLifetime;
         private readonly ILogger<LifeTimeLoggingHostedService> _logger;
@@ -17,7 +17,7 @@ namespace Botix.Common.API.HostedServices
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _applicationLifetime.ApplicationStarted.Register(OnStarted);
             _applicationLifetime.ApplicationStopping.Register(OnStopping);
@@ -25,7 +25,7 @@ namespace Botix.Common.API.HostedServices
             return Task.CompletedTask;
         }
 
-        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+        public override Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
         private void OnStarted() => this._logger.LogInformation("Application started.");
 

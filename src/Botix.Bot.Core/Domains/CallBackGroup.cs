@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Botix.Bot.Core.Domains
@@ -8,6 +9,7 @@ namespace Botix.Bot.Core.Domains
         public CallBackGroup(string messageCallBack)
         {
             MessageCallBack = messageCallBack;
+            CreatedAt = DateTime.UtcNow;
         }
 
         public long ID { get; protected set; }
@@ -17,6 +19,8 @@ namespace Botix.Bot.Core.Domains
         public string MessageCallBack { get; set; }
 
         public virtual IList<CallBack> CallBacks { get; protected set; }
+
+        public DateTime CreatedAt { get; set; }
 
         public void AddButtons(params (string caption, string callback)[] callBackButtons)
         {

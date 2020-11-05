@@ -18,7 +18,9 @@ namespace Botix.Bot.Infrastructure.Migrations
                 {
                     ID = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    IsProcessed = table.Column<bool>(nullable: false)
+                    IsProcessed = table.Column<bool>(nullable: false),
+                    MessageCallBack = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

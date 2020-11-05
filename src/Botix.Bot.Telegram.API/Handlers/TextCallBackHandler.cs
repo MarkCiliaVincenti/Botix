@@ -26,18 +26,17 @@ namespace Botix.Bot.Telegram.API.Handlers
         protected override async Task HandleExecute(CallbackQueryEventArgs args, CancellationToken cancellationToken)
         {
             var chatId = new ChatId(args.CallbackQuery.From.Id);
-            var callBack = await _callBackButtonProvider.GetCallBackGroup(args.CallbackQuery.Data, cancellationToken);
-            if (callBack == null || callBack.IsProcessed)
+            var (found, callBackGroup) = await _callBackButtonProvider.GetCallBackGroup(args.CallbackQuery.Data, cancellationToken);
+            if (!found || callBackGroup.IsProcessed)
             {
                 await _messageSender.SendMessage(chatId, "Ожидание ответа уже истекло или было обработано ранее.", cancellationToken);
             }
             else
             {
-                await _callBackButtonProvider.CallBackProcessed(callBack.ID, cancellationToken);
-
-                var callBacks = callBack.CallBacks;
+                await _callBackButtonProvider.CallBackProcessed(callBackGroup.ID, cancellationToken);
 
                 //здесь должен быть Reactive с SignalR но пока что пусть будет ответ в чат.
+                var callBacks = callBackGroup.CallBacks;
                 await _messageSender.SendMessage(chatId, $"На вопрос: {args.CallbackQuery.Message.Text} вы ответили {callBacks.First().Caption} callBack: {callBacks.First().CallBackGroup.MessageCallBack}", cancellationToken);
             }
         }

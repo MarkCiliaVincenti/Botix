@@ -1,6 +1,8 @@
 using Botix.Bot.Infrastructure.DataBase;
+using Botix.Bot.Telegram.API.Infrastructure.HostedServices;
 using Botix.Common.API.Extensions;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -26,7 +28,11 @@ namespace Botix.Bot.Telegram.API
                             builder.AddSeq(context.Configuration.GetSection("Seq"));
                             builder.AddConfiguration(context.Configuration.GetSection("Logging"));
                         })
-                        .ConfigureServices(service => service.AddLifetimeLogging());
+                        .ConfigureServices(service =>
+                        {
+                            service.AddLifetimeLogging();
+                            service.AddHostedService<CallBackInvalidatorHostedService>();
+                        });
                 });
     }
 }
