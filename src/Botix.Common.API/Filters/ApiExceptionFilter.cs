@@ -12,38 +12,16 @@ namespace Botix.Common.API.Filters
         /// <param name="context">Exception context.</param>
         public override void OnException(ExceptionContext context)
         {
-            dynamic response;
-            switch (context.Exception)
+            dynamic response = context.Exception switch
             {
-                case UnauthorizedAccessException exception:
-                    response = new
-                    {
-                        StatusCode = StatusCodes.Status404NotFound,
-                        exception.Message
-                    };
-                    break;
-                case OperationCanceledException exception:
-                    response = new
-                    {
-                        StatusCode = StatusCodes.Status205ResetContent,
-                        exception.Message
-                    };
-                    break;
-                case WebApiException exception:
-                    response = new
-                    {
-                        exception.StatusCode,
-                        exception.Message
-                    };
-                    break;
-                default:
-                    response = new
-                    {
-                        StatusCode = StatusCodes.Status500InternalServerError,
-                        Message = "Internal server error"
-                    };
-                    break;
-            }
+                UnauthorizedAccessException exception => new
+                    {StatusCode = StatusCodes.Status404NotFound, exception.Message},
+                OperationCanceledException exception => new
+                    {StatusCode = StatusCodes.Status205ResetContent, exception.Message},
+                WebApiException exception => new {exception.StatusCode, exception.Message},
+
+                _ => new {StatusCode = StatusCodes.Status500InternalServerError, Message = "Internal server error"}
+            };
             context.HttpContext.Response.StatusCode = (int)response.StatusCode;
             context.Result = new JsonResult(response);
             context.ExceptionHandled = true;

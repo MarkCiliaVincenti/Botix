@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Botix.Bot.Core;
 using Botix.Bot.Core.Domains;
+using Botix.Bot.Infrastructure;
 using Botix.Bot.Infrastructure.Application;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
@@ -29,37 +30,31 @@ namespace Botix.Bot.Telegram.Application
 
         public async Task SendMessage<TChatId>(TChatId chatId, string message, CancellationToken cancellationToken)
         {
-            var chat = chatId as ChatId;
-
-            _logger.LogDebug($"{new ChatIdEnvelop(chat)} Method: {nameof(SendInlineKeyBoardMessage)} with text message: {message}");
-
-            await _client.SendTextMessageAsync(chat, message, ParseMode.Default, cancellationToken: cancellationToken);
-
-            _logger.LogDebug($"{new ChatIdEnvelop(chat)} Method: {nameof(SendInlineKeyBoardMessage)} message sent");
+            using (_logger.DebugLogingScope("Sending message", nameof(SendMessage), message))
+            {
+                var chat = chatId as ChatId;
+                await _client.SendTextMessageAsync(chat, message, ParseMode.Default, cancellationToken: cancellationToken);
+            }
         }
 
         public async Task SendInlineKeyBoardMessage<TChatId>(TChatId chatId, ButtonMessage message, CancellationToken cancellationToken)
         {
-            var chat = chatId as ChatId;
-            _logger.LogDebug($"{new ChatIdEnvelop(chat)} Method: {nameof(SendInlineKeyBoardMessage)} with {nameof(ButtonMessage)}: {message} ");
-
-            await _client.SendTextMessageAsync(chat, message.Text, ParseMode.Default,
-                replyMarkup: BuildInlineKeyBoardMarkup(message.Buttons), cancellationToken: cancellationToken);
-
-            await AddCallBackGroup(message, cancellationToken);
-
-            _logger.LogDebug($"{new ChatIdEnvelop(chat)} Method: {nameof(SendInlineKeyBoardMessage)} message sent");
+            using (_logger.DebugLogingScope("Sending message", nameof(SendInlineKeyBoardMessage), message.ToString()))
+            {
+                var chat = chatId as ChatId;
+                await _client.SendTextMessageAsync(chat, message.Text, ParseMode.Default, replyMarkup: BuildInlineKeyBoardMarkup(message.Buttons), cancellationToken: cancellationToken);
+                await AddCallBackGroup(message, cancellationToken);
+            }
         }
 
         public async Task SendReplayKeyBoardMessage<TChatId>(TChatId chatId, ButtonMessage message, CancellationToken cancellationToken)
         {
-            var chat = chatId as ChatId;
-            _logger.LogDebug($"{new ChatIdEnvelop(chat)} Method: {nameof(SendInlineKeyBoardMessage)} with {nameof(ButtonMessage)}: {message} ");
-
-            await AddCallBackGroup(message, cancellationToken);
-            await _client.SendTextMessageAsync(chat, message.Text, ParseMode.Html, replyMarkup: BuildMultilineKeyBoardMarkup(message.Buttons), cancellationToken: cancellationToken);
-
-            _logger.LogDebug($"{new ChatIdEnvelop(chat)} Method: {nameof(SendInlineKeyBoardMessage)} message sent");
+            using (_logger.DebugLogingScope("Sending message", nameof(SendReplayKeyBoardMessage), message.ToString()))
+            {
+                var chat = chatId as ChatId;
+                await AddCallBackGroup(message, cancellationToken);
+                await _client.SendTextMessageAsync(chat, message.Text, ParseMode.Html, replyMarkup: BuildMultilineKeyBoardMarkup(message.Buttons), cancellationToken: cancellationToken);
+            }
         }
 
         private async Task AddCallBackGroup(ButtonMessage message, CancellationToken cancellationToken)
