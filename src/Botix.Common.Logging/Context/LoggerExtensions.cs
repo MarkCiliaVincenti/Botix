@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace STC.Common.Hosting.Context
+namespace Botix.Common.Logging.Context
 {
     /// <summary>
     ///    Logger extension methods.

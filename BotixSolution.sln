@@ -9,13 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5864E982-7A0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6EB15BB9-7747-4EA2-A908-1B62CA14E4DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.TelegramBot.API", "src\Botix.TelegramBot.API\Botix.TelegramBot.API.csproj", "{D0C2920C-7B3B-433F-A171-1445810A8046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.Bot.Telegram.API", "src\Botix.Bot.Telegram.API\Botix.Bot.Telegram.API.csproj", "{D0C2920C-7B3B-433F-A171-1445810A8046}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.TelegramBot.Models", "src\Botix.TelegramBot.Models\Botix.TelegramBot.Models.csproj", "{E3BE7978-FACB-4509-BAB1-22CFE93878E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.Bot.Telegram.API.Models", "src\Botix.Bot.Telegram.API.Models\Botix.Bot.Telegram.API.Models.csproj", "{E3BE7978-FACB-4509-BAB1-22CFE93878E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.API.Common", "src\Botix.API.Common\Botix.API.Common.csproj", "{6138A772-08EF-46E1-8577-BF5FB683F142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.Common.API", "src\Botix.Common.API\Botix.Common.API.csproj", "{6138A772-08EF-46E1-8577-BF5FB683F142}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.TelegramBot.Core", "src\Botix.TelegramBot.Core\Botix.TelegramBot.Core.csproj", "{372AF677-8220-497E-99D6-F05625598D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.Bot.Telegram", "src\Botix.Bot.Telegram\Botix.Bot.Telegram.csproj", "{372AF677-8220-497E-99D6-F05625598D89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.Common.Logging", "src\Botix.Common.Logging\Botix.Common.Logging.csproj", "{6AF2B1A4-121F-4F24-BB38-0FBBE6CFA831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Botix.Bot.Core", "src\Botix.Bot.Core\Botix.Bot.Core.csproj", "{F84D07A5-5E24-4638-8BE3-263EBC8E440B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botix.Bot.Infrastructure", "src\Botix.Bot.Infrastructure\Botix.Bot.Infrastructure.csproj", "{3BE4DFB5-BB43-4843-A986-86D4CBDA5EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{372AF677-8220-497E-99D6-F05625598D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{372AF677-8220-497E-99D6-F05625598D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{372AF677-8220-497E-99D6-F05625598D89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF2B1A4-121F-4F24-BB38-0FBBE6CFA831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF2B1A4-121F-4F24-BB38-0FBBE6CFA831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF2B1A4-121F-4F24-BB38-0FBBE6CFA831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF2B1A4-121F-4F24-BB38-0FBBE6CFA831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84D07A5-5E24-4638-8BE3-263EBC8E440B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84D07A5-5E24-4638-8BE3-263EBC8E440B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84D07A5-5E24-4638-8BE3-263EBC8E440B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84D07A5-5E24-4638-8BE3-263EBC8E440B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE4DFB5-BB43-4843-A986-86D4CBDA5EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE4DFB5-BB43-4843-A986-86D4CBDA5EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE4DFB5-BB43-4843-A986-86D4CBDA5EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE4DFB5-BB43-4843-A986-86D4CBDA5EAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +66,9 @@ Global
 		{E3BE7978-FACB-4509-BAB1-22CFE93878E3} = {5864E982-7A03-4C3F-B85A-7FD10456453B}
 		{6138A772-08EF-46E1-8577-BF5FB683F142} = {5864E982-7A03-4C3F-B85A-7FD10456453B}
 		{372AF677-8220-497E-99D6-F05625598D89} = {5864E982-7A03-4C3F-B85A-7FD10456453B}
+		{6AF2B1A4-121F-4F24-BB38-0FBBE6CFA831} = {5864E982-7A03-4C3F-B85A-7FD10456453B}
+		{F84D07A5-5E24-4638-8BE3-263EBC8E440B} = {5864E982-7A03-4C3F-B85A-7FD10456453B}
+		{3BE4DFB5-BB43-4843-A986-86D4CBDA5EAC} = {5864E982-7A03-4C3F-B85A-7FD10456453B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26B25E0E-EDFA-432C-9A94-47CA7096925B}

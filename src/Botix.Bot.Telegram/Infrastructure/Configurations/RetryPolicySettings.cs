@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Botix.TelegramBot.Core.Infrastructure.Configurations
+namespace Botix.Bot.Telegram.Infrastructure.Configurations
 {
     public class RetryPolicySettings
     {

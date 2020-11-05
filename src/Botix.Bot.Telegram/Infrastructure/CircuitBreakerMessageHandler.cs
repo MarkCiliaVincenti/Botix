@@ -3,11 +3,11 @@ using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Botix.TelegramBot.Core.Infrastructure.Configurations;
+using Botix.Bot.Telegram.Infrastructure.Configurations;
 using Microsoft.Extensions.Logging;
 using Polly;
 
-namespace Botix.TelegramBot.Core.Infrastructure
+namespace Botix.Bot.Telegram.Infrastructure
 {
     public class CircuitBreakerMessageHandler : DelegatingHandler
     {
@@ -22,7 +22,7 @@ namespace Botix.TelegramBot.Core.Infrastructure
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             CancellationToken cancellationToken) =>
-            
+
             Policy.Handle<HttpRequestException>()
                 .Or<SocketException>()
                 .WaitAndRetryForeverAsync(i => _settings.OnFailDelay,

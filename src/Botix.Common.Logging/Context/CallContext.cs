@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace STC.Common.Hosting.Context
+namespace Botix.Common.Logging.Context
 {
     /// <summary>
     ///     Call context used to store current request state.

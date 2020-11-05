@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Botix.API.Common.HostedServices
+namespace Botix.Common.API.HostedServices
 {
     public class LifeTimeLoggingHostedService : IHostedService
     {

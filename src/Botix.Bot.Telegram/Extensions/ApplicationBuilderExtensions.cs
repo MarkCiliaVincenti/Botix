@@ -1,10 +1,11 @@
 ﻿using System.Linq;
-using Botix.TelegramBot.Core.Handlers;
+using System.Threading;
+using Botix.Bot.Telegram.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
 
-namespace Botix.TelegramBot.Core.Extensions
+namespace Botix.Bot.Telegram.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
@@ -15,14 +16,16 @@ namespace Botix.TelegramBot.Core.Extensions
 
             client.OnMessage += async (_, args) => await provider.GetServices<IMessageHandler>()
                 .First(x => x.MessageType == args.Message.Type)
-                .HandleAsync(args.Message);
+                .HandleAsync(args.Message, CancellationToken.None);
 
-            client.OnCallbackQuery += async (_, args) => await provider.GetService<ICallbackHandler>()
-                .HandleAsync(args);
+            client.OnCallbackQuery += async (_, args) => await provider.GetServices<ICallbackHandler>()
+                .First(x => x.MessageType == args.CallbackQuery.Message.Type)
+                .HandleAsync(args, CancellationToken.None);
 
             client.StartReceiving();
 
             return builder;
         }
+
     }
 }

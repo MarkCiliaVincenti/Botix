@@ -1,6 +1,6 @@
 ﻿using Telegram.Bot;
 
-namespace Botix.TelegramBot.Core
+namespace Botix.Bot.Telegram
 {
     public interface ITelegramBotClientFactory
     {

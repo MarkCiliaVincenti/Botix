@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Sockets;
-using Botix.TelegramBot.Core.Infrastructure;
-using Botix.TelegramBot.Core.Infrastructure.Configurations;
+using Botix.Bot.Telegram.Infrastructure;
+using Botix.Bot.Telegram.Infrastructure.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Telegram.Bot;
 
-namespace Botix.TelegramBot.Core.Extensions
+namespace Botix.Bot.Telegram.Extensions
 {
     public static class ServiceCollectionExtensions
     {

@@ -1,11 +1,11 @@
-﻿using Botix.API.Common.HostedServices;
+﻿using Botix.Common.API.HostedServices;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Botix.API.Common.Extensions
+namespace Botix.Common.API.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddLifetimeLogging(this IServiceCollection services) => 
+        public static IServiceCollection AddLifetimeLogging(this IServiceCollection services) =>
             services.AddHostedService<LifeTimeLoggingHostedService>();
     }
 }

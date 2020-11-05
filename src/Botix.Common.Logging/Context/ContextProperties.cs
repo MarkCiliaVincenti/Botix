@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
 
-namespace STC.Common.Hosting.Context
+namespace Botix.Common.Logging.Context
 {
     /// <summary>
     ///     Call context state properties.

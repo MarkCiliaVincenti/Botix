@@ -1,8 +1,8 @@
 ﻿using System;
-using Botix.TelegramBot.Core.Handlers;
+using Botix.Bot.Telegram.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Botix.TelegramBot.Core.Infrastructure
+namespace Botix.Bot.Telegram.Infrastructure
 {
     public class ConfigurationBotOption
     {

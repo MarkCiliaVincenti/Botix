@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Botix.TelegramBot.Core.Handlers;
+using Botix.Bot.Telegram.Handlers;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace Botix.TelegramBot.API.Handlers
+namespace Botix.Bot.Telegram.API.Handlers
 {
     public class PhotoMessageHandler : MessageHandlerBase
     {
