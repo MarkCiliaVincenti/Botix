@@ -59,11 +59,11 @@ namespace Botix.Bot.Telegram.API
                 {
                     Version = "v1",
                     Title = Assembly.GetAssembly(typeof(Startup))?.GetName().Name,
-                    Description = "API для коммуникации с клиентом через Telegram бот.",
+                    Description = "API пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ Telegram пїЅпїЅпїЅ.",
                     Contact = new OpenApiContact
                     {
                         Email = "marat2785@gmail.com",
-                        Name = "Тапканов Марат",
+                        Name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ",
                         Url = new Uri("https://www.facebook.com/m.tapkanov/")
                     }
                 });

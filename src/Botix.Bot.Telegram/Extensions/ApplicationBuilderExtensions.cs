@@ -13,7 +13,7 @@ namespace Botix.Bot.Telegram.Extensions
         {
             var provider = builder.ApplicationServices;
             var client = provider.GetService<ITelegramBotClient>();
-
+            
             client.OnMessage += async (_, args) => await provider.GetServices<IMessageHandler>()
                 .First(x => x.MessageType == args.Message.Type)
                 .HandleAsync(args.Message, CancellationToken.None);

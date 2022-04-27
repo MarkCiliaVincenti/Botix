@@ -33,7 +33,7 @@ namespace Botix.Bot.Telegram.API.Handlers
             }
             else
             {
-                await _callBackButtonProvider.CallBackProcessed(callBackGroup.ID, cancellationToken);
+                await _callBackButtonProvider.CallBackProcessed(callBackGroup.Id, cancellationToken);
 
                 //здесь должен быть Reactive с SignalR но пока что пусть будет ответ в чат.
                 var callBacks = callBackGroup.CallBacks;

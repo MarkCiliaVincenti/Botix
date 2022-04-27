@@ -10,13 +10,13 @@
             Guid = guid;
         }
 
-        public long ID { get; protected set; }
+        public long Id { get; protected set; }
 
         public string Caption { get; protected set; }
 
         public string Guid { get; protected set; }
 
-        public long CallBackGroupID { get; protected set; }
+        public long CallBackGroupId { get; protected set; }
 
         public CallBackGroup CallBackGroup { get; protected set; }
     }

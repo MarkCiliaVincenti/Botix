@@ -12,7 +12,7 @@ namespace Botix.Bot.Core.Domains
             CreatedAt = DateTime.UtcNow;
         }
 
-        public long ID { get; protected set; }
+        public long Id { get; protected set; }
 
         public bool IsProcessed { get; protected set; }
 

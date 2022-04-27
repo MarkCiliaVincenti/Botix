@@ -5,8 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Botix.Bot.Core;
 using Botix.Bot.Core.Domains;
-using Botix.Bot.Infrastructure;
 using Botix.Bot.Infrastructure.Application;
+using Botix.Common.Logging.Context;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -30,7 +30,7 @@ namespace Botix.Bot.Telegram.Application
 
         public async Task SendMessage<TChatId>(TChatId chatId, string message, CancellationToken cancellationToken)
         {
-            using (_logger.DebugLogingScope("Sending message", nameof(SendMessage), message))
+            using (_logger.DebugLoggingScope("Sending message", nameof(SendMessage), message))
             {
                 var chat = chatId as ChatId;
                 await _client.SendTextMessageAsync(chat, message, ParseMode.Default, cancellationToken: cancellationToken);
@@ -39,7 +39,7 @@ namespace Botix.Bot.Telegram.Application
 
         public async Task SendInlineKeyBoardMessage<TChatId>(TChatId chatId, ButtonMessage message, CancellationToken cancellationToken)
         {
-            using (_logger.DebugLogingScope("Sending message", nameof(SendInlineKeyBoardMessage), message.ToString()))
+            using (_logger.DebugLoggingScope("Sending message", nameof(SendInlineKeyBoardMessage), message.ToString()))
             {
                 var chat = chatId as ChatId;
                 await _client.SendTextMessageAsync(chat, message.Text, ParseMode.Default, replyMarkup: BuildInlineKeyBoardMarkup(message.Buttons), cancellationToken: cancellationToken);
@@ -49,7 +49,7 @@ namespace Botix.Bot.Telegram.Application
 
         public async Task SendReplayKeyBoardMessage<TChatId>(TChatId chatId, ButtonMessage message, CancellationToken cancellationToken)
         {
-            using (_logger.DebugLogingScope("Sending message", nameof(SendReplayKeyBoardMessage), message.ToString()))
+            using (_logger.DebugLoggingScope("Sending message", nameof(SendReplayKeyBoardMessage), message.ToString()))
             {
                 var chat = chatId as ChatId;
                 await AddCallBackGroup(message, cancellationToken);
@@ -67,8 +67,7 @@ namespace Botix.Bot.Telegram.Application
         }
 
         private static InlineKeyboardMarkup BuildInlineKeyBoardMarkup(IList<Button> buttons) =>
-            new InlineKeyboardMarkup(
-                buttons.Select(x => InlineKeyboardButton.WithCallbackData(x.Text, x.PressCallBack)));
+            new InlineKeyboardMarkup(buttons.Select(x => InlineKeyboardButton.WithCallbackData(x.Text, x.PressCallBack)));
 
         private static InlineKeyboardMarkup BuildMultilineKeyBoardMarkup(IList<Button> buttons, decimal columns = 3)
         {

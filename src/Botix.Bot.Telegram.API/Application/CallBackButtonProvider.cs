@@ -41,7 +41,7 @@ namespace Botix.Bot.Telegram.API.Application
         {
             using var scope = _serviceScope.CreateScope();
             await using var context = scope.ServiceProvider.GetRequiredService<BotDbContext>();
-            var callBack = await context.CallBackGroups.FirstAsync(x => x.ID == id, cancellationToken);
+            var callBack = await context.CallBackGroups.FirstAsync(x => x.Id == id, cancellationToken);
             callBack.Processed();
             await context.SaveChangesAsync(cancellationToken);
         }

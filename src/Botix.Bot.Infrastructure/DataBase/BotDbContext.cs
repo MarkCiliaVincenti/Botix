@@ -44,7 +44,7 @@ namespace Botix.Bot.Infrastructure.DataBase
                 .ToTable("CallBacks", "api")
                 .HasOne(x => x.CallBackGroup)
                 .WithMany(x => x.CallBacks)
-                .HasForeignKey(x => x.CallBackGroupID);
+                .HasForeignKey(x => x.CallBackGroupId);
 
             modelBuilder.Entity<CallBackGroup>()
                 .ToTable("CallBackGroups", "api");

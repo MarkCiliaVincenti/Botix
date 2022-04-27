@@ -26,7 +26,7 @@ namespace Botix.Bot.Infrastructure.Caching
         private static readonly Dictionary<object, RefCounted<SemaphoreSlim>> SemaphoreSlims =
             new Dictionary<object, RefCounted<SemaphoreSlim>>();
 
-        private SemaphoreSlim GetOrCreate(object key)
+        private static SemaphoreSlim GetOrCreate(object key)
         {
             RefCounted<SemaphoreSlim> refCounted;
             lock (SemaphoreSlims)

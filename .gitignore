@@ -20,3 +20,4 @@ testsettings.json
 *.lock
 *.ide*
 *.dtbcache
+*.DS_Store
